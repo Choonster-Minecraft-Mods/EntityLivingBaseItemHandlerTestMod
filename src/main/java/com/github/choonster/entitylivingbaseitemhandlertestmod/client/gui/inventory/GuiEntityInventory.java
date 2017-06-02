@@ -18,6 +18,11 @@ public class GuiEntityInventory extends GuiContainer {
 	private static final ResourceLocation ENTITY_INVENTORY_GUI_TEXTURE = new ResourceLocation(EntityLivingBaseItemHandlerTestMod.MODID, "textures/gui/container/entity_inventory.png");
 
 	/**
+	 * The colour of the inventory names.
+	 */
+	private static final int TEXT_COLOUR = 0x404040;
+
+	/**
 	 * The entity.
 	 */
 	private final EntityLivingBase entity;
@@ -25,6 +30,21 @@ public class GuiEntityInventory extends GuiContainer {
 	public GuiEntityInventory(final ContainerEntityInventory container) {
 		super(container);
 		entity = container.getEntity();
+
+		xSize = 178;
+		ySize = 159;
+	}
+
+	/**
+	 * Draw the foreground layer for the GuiContainer (everything in front of the items)
+	 *
+	 * @param mouseX Mouse x coordinate
+	 * @param mouseY Mouse y coordinate
+	 */
+	@Override
+	protected void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY) {
+		this.fontRenderer.drawString(entity.getDisplayName().getUnformattedText(), 8, 6, TEXT_COLOUR);
+		this.fontRenderer.drawString(mc.player.inventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, TEXT_COLOUR);
 	}
 
 	/**
@@ -41,6 +61,6 @@ public class GuiEntityInventory extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(ENTITY_INVENTORY_GUI_TEXTURE);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-		GuiInventory.drawEntityOnScreen(this.guiLeft + 88, this.guiTop + 45, 20, this.guiLeft + 88 - mouseX, this.guiTop + 45 - 30 - mouseY, entity);
+		GuiInventory.drawEntityOnScreen(this.guiLeft + 88, this.guiTop + 58, 20, this.guiLeft + 88 - mouseX, this.guiTop + 45 - 30 - mouseY, entity);
 	}
 }

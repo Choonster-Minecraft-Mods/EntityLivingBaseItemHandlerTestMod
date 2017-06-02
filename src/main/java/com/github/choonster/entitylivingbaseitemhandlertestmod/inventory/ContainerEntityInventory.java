@@ -81,7 +81,7 @@ public class ContainerEntityInventory extends Container {
 
 		final IItemHandlerModifiable entityHandInventory = Preconditions.checkNotNull((IItemHandlerModifiable) entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP));
 
-		addSlotToContainer(new SlotItemHandler(entityHandInventory, 0, 127, 20) {
+		addSlotToContainer(new SlotItemHandler(entityHandInventory, 0, 127, 32) {
 			@SideOnly(Side.CLIENT)
 			@Override
 			public TextureAtlasSprite getBackgroundSprite() {
@@ -89,7 +89,7 @@ public class ContainerEntityInventory extends Container {
 			}
 		});
 
-		addSlotToContainer(new SlotItemHandler(entityHandInventory, 1, 35, 20) {
+		addSlotToContainer(new SlotItemHandler(entityHandInventory, 1, 35, 32) {
 			@SideOnly(Side.CLIENT)
 			@Override
 			public String getSlotTexture() {
@@ -106,7 +106,7 @@ public class ContainerEntityInventory extends Container {
 
 			final EntityEquipmentSlot equipmentSlot = ARMOUR_EQUIPMENT_SLOTS[i];
 
-			addSlotToContainer(new SlotItemHandler(entityArmourInventory, 3 - i, 54 + col * 54, 6 + row * 27) {
+			addSlotToContainer(new SlotItemHandler(entityArmourInventory, 3 - i, 54 + col * 54, 18 + row * 27) {
 				@Override
 				public int getSlotStackLimit() {
 					return 1;
@@ -136,12 +136,12 @@ public class ContainerEntityInventory extends Container {
 
 		for (int row = 0; row < 3; ++row) {
 			for (int col = 0; col < SLOTS_PER_ROW; ++col) {
-				addSlotToContainer(new SlotItemHandler(playerInventory, col + row * SLOTS_PER_ROW + SLOTS_PER_ROW, 9 + col * 18, 54 + row * 18));
+				addSlotToContainer(new SlotItemHandler(playerInventory, col + row * SLOTS_PER_ROW + SLOTS_PER_ROW, 9 + col * 18, 77 + row * 18));
 			}
 		}
 
 		for (int col = 0; col < SLOTS_PER_ROW; ++col) {
-			addSlotToContainer(new SlotItemHandler(playerInventory, col, 9 + col * 18, 112));
+			addSlotToContainer(new SlotItemHandler(playerInventory, col, 9 + col * 18, 135));
 		}
 	}
 
