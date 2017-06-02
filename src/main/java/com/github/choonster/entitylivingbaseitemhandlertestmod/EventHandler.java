@@ -21,7 +21,7 @@ public class EventHandler {
 	 * @param event The event
 	 */
 	@SubscribeEvent
-	public static void entityInteract(final PlayerInteractEvent.EntityInteract event) {
+	public static void entityInteract(final PlayerInteractEvent.EntityInteractSpecific event) {
 		final World world = event.getWorld();
 		final Entity entity = event.getTarget();
 		final EntityPlayer player = event.getEntityPlayer();
